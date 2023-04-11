@@ -1,42 +1,143 @@
+/* Root styles */
 #root {
-  max-width: 1280px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Navigation button styles */
+.navButton {
+  background-color: #ee6e73;
+  margin: 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #fff;
+  padding: 10px 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.navButton:hover {
+  background-color: #c45c62;
 }
 
-.card {
-  padding: 2em;
+/* Crew card container styles */
+.ReadCrew {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin: 50px 0;
 }
 
-.read-the-docs {
-  color: #888;
+/* Crew card styles */
+.Card {
+  background-color: #1e1e1e;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
+
+.Card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(255, 255, 255, 0.2);
+}
+
+.Card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+  z-index: -1;
+}
+
+.Card img {
+  width: 100px;
+  height: 100px;
+}
+
+.Card h2 {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+.Card p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.editButton {
+  margin: 10px;
+  background-color: #fff;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #ee6e73;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.editButton:hover {
+  background-color: #ee6e73;
+  color: #fff;
+}
+
+label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"]{
+  border: none;
+  border-radius: 25px;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15);
+  font-size: 16px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+button[type="submit"] {
+  background-color: #ee6e73;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button[type="submit"]:hover {
+  background-color: #3e8e41;
+}
+
+button:hover.deleteButton {
+  background-color: #ff0008;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 10px;
+}
+

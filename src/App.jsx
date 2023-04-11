@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { useRoutes, Link } from "react-router-dom";
+import CreateCrew from "../pages/CreateCrew";
+import ReadCrew from "../pages/ReadCrew";
+import EditCrew from "../pages/EditCrew";
+import DetailCrew from "../pages/DetailCrew";
+import { supabase } from "./client";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [crew, setCrew] = useState([]);
+
+  useEffect(() => {
+    const fetchCrew = async () => {
+      const { data } = await supabase
+        .from("CrewMate")
+        .select()
+        .order("created_at", { ascending: true });
+
+      setCrew(data);
+    };
+
+    fetchCrew();
+  }, []);
+
+  let element = useRoutes([
+    {
+      path: "/",
+      element: <ReadCrew data={crew} />,
+    },
+    {
+      path: "/edit/:id",
+      element: <EditCrew data={crew} />,
+    },
+    {
+      path: "/:id",
+      element: <DetailCrew data={crew} />,
+    },
+    {
+      path: "/create",
+      element: <CreateCrew />,
+    },
+
+  ]);
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Crew Mate</h1>
+      <Link to="/">
+        <button className="navButton">View Crew</button>
+      </Link>
+      <Link to="/create">
+        <button className="navButton"> Create New Crew Mate</button>
+      </Link>
+      {element}
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
