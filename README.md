@@ -1,4 +1,4 @@
-# Web Development Project 7 - *Name of App Here*
+# Web Development Project 7 - *Crew Mate*
 
 Submitted by: **Zarya Amin**
 
